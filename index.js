@@ -12,13 +12,14 @@ io.on('connection', function (socket) {
   socket.on('disconnect', function () {
     console.log('a user go out')
   })
+  socket.on('setmenu', function (obj) {
+    console.log(obj)
+    io.emit('setmenu', obj);
+  })
 
   socket.on('msg', function (obj) {
-    //延迟3s返回信息给客户端
-    setTimeout(function () {
-      console.log('the websokcet message is' + obj)
-      io.emit('msg', obj)
-    }, 3000)
+    console.log('the websokcet message is' + obj)
+    io.emit('msg', obj)
   })
 })
 server.listen(3001)
