@@ -13,13 +13,16 @@ io.on('connection', function (socket) {
     console.log('a user go out')
   })
   socket.on('setmenu', function (obj) {
-    console.log(obj)
     io.emit('setmenu', obj);
+  })
+  socket.on('setname', function (obj) {
+    io.emit('setname', obj);
+  })
+  socket.on('setfood', function (obj) {
+    io.emit('setfood', obj);
   })
 
   socket.on('msg', function (obj) {
-    console.log('the websokcet message is' + obj)
-    io.emit('msg', obj)
   })
 })
 server.listen(3001)
@@ -31,5 +34,4 @@ require('./plugins/db')(app)
 require('./routes/admin')(app)
 
 app.listen(3000,()=>{
-  console.log('http://localhost:3000')
 })
