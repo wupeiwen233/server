@@ -21,6 +21,23 @@ module.exports = app => {
     res.send(model)
   })
 
+router.post('/dutylist', async (req, res) => {
+      const model = await Menulist.update(
+        { name: 'duty' },
+        { $set: req.body },
+        {
+          new: true,
+          rawResult: true,
+          upsert: true,
+        }
+      )
+      res.send(model)
+    })
+    router.get('/dutylist', async (req, res) => {
+      const model = await Menulist.find({ name: 'duty' })
+      res.send(model)
+    })
+
 
   router.post('/namelist', async (req, res) => {
     const model = await Namelist.update(
@@ -54,6 +71,23 @@ module.exports = app => {
   })
   router.get('/foodlist',async(req,res)=>{
     const model = await Foodlist.find({ name: 'food' })
+    res.send(model)
+  })
+
+router.post('/lockstatus', async (req, res) => {
+    const model = await Foodlist.update(
+      { name: 'lock' },
+      { $set: req.body },
+      {
+        new: true,
+        rawResult: true,
+        upsert: true,
+      }
+    )
+    res.send(model)
+  })
+  router.get('/lockstatus', async (req, res) => {
+    const model = await Foodlist.find({ name: 'lock' })
     res.send(model)
   })
   

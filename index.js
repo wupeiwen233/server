@@ -18,8 +18,14 @@ io.on('connection', function (socket) {
   socket.on('setname', function (obj) {
     io.emit('setname', obj);
   })
+  socket.on('setduty', function (obj) {
+    io.emit('setduty', obj)
+  })
   socket.on('setfood', function (obj) {
     io.emit('setfood', obj);
+  })
+  socket.on('lockstatus', function (obj) {
+    io.emit('lockstatus', obj)
   })
 
   socket.on('msg', function (obj) {
